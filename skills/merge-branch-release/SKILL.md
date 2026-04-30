@@ -9,7 +9,12 @@ description: Use when the user wants to merge the current branch into another br
 
 Preserve the user's working branch. Commit current-branch work first, merge that
 branch into the target branch, push the target branch, then switch back to the
-original branch.
+original branch. For any workflow that switches branches or uses another
+worktree to merge, returning to the original branch is mandatory by default.
+
+Only skip returning to the original branch when the user explicitly says not to
+switch back, or explicitly asks to delete the original branch after the merge.
+Do not infer either exception from release wording alone.
 
 ## Worktree Target Resolution
 
@@ -93,9 +98,10 @@ EOF
 
 9. Verify and switch back.
    - Run `git status -sb` and `git log --oneline -3`.
-   - Switch back: `git checkout <source_branch>`.
-   - Run `git status -sb` again and tell the user whether source is ahead/behind its remote.
+   - Unless the user explicitly requested not to switch back or explicitly requested deleting the original branch, switch back: `git checkout <source_branch>`.
    - If target steps ran in another worktree path, return to the original `repo_root` instead of switching that target worktree away from its branch.
+   - Run `git status -sb` again from the original branch/worktree and tell the user whether source is ahead/behind its remote.
+   - If the user requested deleting the original branch, delete it only after target push verification and only when no unmerged work would be lost.
 
 ## Safety Constraints
 
@@ -103,6 +109,7 @@ EOF
 - Never skip hooks with `--no-verify`.
 - Do not push the source branch unless the user asks; only push the target branch for this workflow.
 - Do not remove, prune, or modify worktrees unless the user explicitly requests it.
+- Do not leave the user on the target branch after a merge unless the user explicitly requested not to switch back or requested deleting the original branch.
 - If uncommitted unrelated changes are present, ask before including them.
 - If a command needs network or unrestricted git access, request the needed tool permission and continue.
 
@@ -114,5 +121,5 @@ Report:
 - target branch updated
 - whether a separate worktree path was used for the target branch
 - push result
-- final branch after switching back
+- final branch/worktree after switching back, or the explicit user exception that skipped switching back
 - any residual ahead/behind status or conflicts
