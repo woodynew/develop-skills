@@ -18,8 +18,6 @@ unrelated project state.
 skills/
   <skill-name>/
     SKILL.md
-    agents/
-      openai.yaml
 ```
 
 Each skill directory should be portable on its own. Avoid storing generated
@@ -45,7 +43,6 @@ cp -R skills/merge-branch-release .cursor/skills/
 
 - Keep `SKILL.md` concise and focused on agent instructions.
 - Use clear YAML frontmatter with `name` and `description`.
-- Put UI metadata in `agents/openai.yaml`.
 - Add scripts or references only when they materially improve repeatability.
 - Do not include local workspace paths, secrets, logs, or temporary state.
 - Prefer conservative, reversible workflows for git and release skills.
