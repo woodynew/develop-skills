@@ -1,5 +1,5 @@
 ---
-name: next-ai-drawio-mcp
+name: next-ai-drawio
 description: Use when the user has a drawing or diagramming intent and wants an AI agent to create, preview, edit, inspect, or export draw.io / diagrams.net diagrams through the Next AI Draw.io MCP server from github.com/DayuanJiang/next-ai-draw-io or the @next-ai-drawio/mcp-server package. Trigger for requests such as drawing an architecture diagram, flowchart, sequence diagram, system design diagram, network topology, cloud architecture, ER diagram, mind map, process diagram, data pipeline, deployment diagram, class/component diagram, or turning natural language into a visual diagram. Also applies to configuring the drawio MCP server, starting diagram sessions, generating mxGraphModel XML, preserving browser edits, using ID-based edit operations, exporting .drawio/.svg/.png files, or troubleshooting "No active session", stale browser preview, port, XML validation, or draw.io embed issues.
 ---
 

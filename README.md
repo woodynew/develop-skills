@@ -12,7 +12,7 @@ unrelated project state.
 | --- | --- |
 | `database-mcp-guard` | Prefer project-matched database MCP tools before database work, with guardrails for destructive operations. |
 | `merge-branch-release` | Safely merge the current working branch into a target release branch, push the target branch, and return to the original branch. |
-| `next-ai-drawio-mcp` | Help AI agents configure and use the Next AI Draw.io MCP server for browser-previewed draw.io diagram creation, editing, and export. |
+| `next-ai-drawio` | Help AI agents configure and use the Next AI Draw.io MCP server for browser-previewed draw.io diagram creation, editing, and export. |
 
 ## Repository Layout
 
